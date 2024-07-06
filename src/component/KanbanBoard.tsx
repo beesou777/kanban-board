@@ -29,7 +29,7 @@ const KanbanBoard = () => {
   };
 
   const deleteColumn = (columnId:any) => {
-    const filteredColumns = columns.filter((column) => column.id !== columnId);
+    const filteredColumns = columns.filter((column:any) => column.id !== columnId);
     setColumns(filteredColumns);
   };
 
@@ -50,9 +50,9 @@ const KanbanBoard = () => {
 
     if (activeColumnId === overColumnId) return;
 
-    setColumns((columns) => {
-      const activeColumnIndex = columns.findIndex((column) => column.id === activeColumnId);
-      const overColumnIndex = columns.findIndex((column) => column.id === overColumnId);
+    setColumns((columns:any) => {
+      const activeColumnIndex = columns.findIndex((column:any) => column.id === activeColumnId);
+      const overColumnIndex = columns.findIndex((column:any) => column.id === overColumnId);
 
       return arrayMove(columns, activeColumnIndex, overColumnIndex);
     });
