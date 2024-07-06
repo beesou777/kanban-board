@@ -1,4 +1,3 @@
-import React from 'react'
 import KanbanBoard from "../component/KanbanBoard"
 
 const Home = () => {

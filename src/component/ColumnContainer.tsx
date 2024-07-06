@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import DeleteIcons from '../icons/DeleteIcons';
 import { useSortable } from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
 
-const ColumnContainer = (props) => {
+const ColumnContainer = (props:any) => {
   const [editMode,setEditMode] = useState(false);
   const { column,deleteColumn,updateColumnTitle } = props;
   const {setNodeRef,attributes,listeners,transform,transition,isDragging} = useSortable({
@@ -52,7 +52,7 @@ const ColumnContainer = (props) => {
           {editMode && <input onChange={(e) => updateColumnTitle(column.id,e.target.value)}
            defaultValue={column.title} 
            onKeyDown={(e) =>{
-            if(e.key !== 'Enter') reurn;
+            if(e.key !== 'Enter') return;
             setEditMode(false); 
            }}
            className="bg-gray-950 text-white outline-none"/>}

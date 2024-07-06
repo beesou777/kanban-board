@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import PlusIcons from '../icons/PlusIcons';
 import { v4 as generateId } from 'uuid';
 import ColumnContainer from './ColumnContainer';
@@ -7,8 +7,8 @@ import { SortableContext, arrayMove } from '@dnd-kit/sortable';
 import { createPortal } from 'react-dom';
 
 const KanbanBoard = () => {
-  const [columns, setColumns] = useState([]);
-  const [activeColumn, setActiveColumn] = useState(null);
+  const [columns, setColumns] = useState<Array<{ id: Number; title: string }>>([]);
+  const [activeColumn, setActiveColumn] = useState<any>(null);
 
   const columnsId = useMemo(() => columns.map((column) => column.id), [columns]);
 
@@ -22,25 +22,25 @@ const KanbanBoard = () => {
 
   const createNewColumn = () => {
     const columnToAdd = {
-      id: generateId(),
+      id: Number(generateId()),
       title: `Column ${columns.length + 1}`,
     };
     setColumns([...columns, columnToAdd]);
   };
 
-  const deleteColumn = (columnId) => {
+  const deleteColumn = (columnId:Number) => {
     const filteredColumns = columns.filter((column) => column.id !== columnId);
     setColumns(filteredColumns);
   };
 
-  const onDragStart = (event) => {
+  const onDragStart = (event: any) => {
     if (event.active.data.current?.type === 'column') {
       setActiveColumn(event.active.data.current?.column);
       return;
     }
   };
 
-  const onDragEnd = (event) => {
+  const onDragEnd = (event: any) => {
     const { active, over } = event;
 
     if (!over) return;
@@ -58,9 +58,9 @@ const KanbanBoard = () => {
     });
   };
 
-  const updateColumnTitle = (columnId, title) => {
-    setColumns((columns) =>
-      columns.map((column) => {
+  const updateColumnTitle = (columnId:Number, title:string) => {
+    setColumns((columns:any) =>
+      columns.map((column:any) => {
         if (column.id === columnId) {
           return {
             ...column,
@@ -77,9 +77,9 @@ const KanbanBoard = () => {
       <DndContext sensors={sensors} onDragStart={onDragStart} onDragEnd={onDragEnd}>
         <div className="m-auto flex gap-4">
           <div className="flex gap-4">
-            <SortableContext items={columnsId}>
+            <SortableContext items={columnsId as number[]}>
               {columns.map((column) => (
-                <ColumnContainer key={column.id} column={column} deleteColumn={(column) => deleteColumn(column)} 
+                <ColumnContainer key={column?.id} column={column} deleteColumn={(column:Number) => deleteColumn(column)} 
                 updateColumnTitle ={updateColumnTitle}
                 />
               ))}
