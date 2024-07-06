@@ -28,7 +28,7 @@ const KanbanBoard = () => {
     setColumns([...columns, columnToAdd]);
   };
 
-  const deleteColumn = (columnId:Number) => {
+  const deleteColumn = (columnId:any) => {
     const filteredColumns = columns.filter((column) => column.id !== columnId);
     setColumns(filteredColumns);
   };
@@ -58,7 +58,7 @@ const KanbanBoard = () => {
     });
   };
 
-  const updateColumnTitle = (columnId:Number, title:string) => {
+  const updateColumnTitle = (columnId:any, title:string) => {
     setColumns((columns:any) =>
       columns.map((column:any) => {
         if (column.id === columnId) {
@@ -78,7 +78,7 @@ const KanbanBoard = () => {
         <div className="m-auto flex gap-4">
           <div className="flex gap-4">
             <SortableContext items={columnsId as number[]}>
-              {columns.map((column) => (
+              {columns.map((column:any) => (
                 <ColumnContainer key={column?.id} column={column} deleteColumn={(column:Number) => deleteColumn(column)} 
                 updateColumnTitle ={updateColumnTitle}
                 />
