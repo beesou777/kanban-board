@@ -7,10 +7,10 @@ import { SortableContext, arrayMove } from '@dnd-kit/sortable';
 import { createPortal } from 'react-dom';
 
 const KanbanBoard = () => {
-  const [columns, setColumns] = useState<Array<{ id: Number; title: string }>>([]);
+  const [columns, setColumns] = useState<any>([]);
   const [activeColumn, setActiveColumn] = useState<any>(null);
 
-  const columnsId = useMemo(() => columns.map((column) => column.id), [columns]);
+  const columnsId = useMemo(() => columns.map((column:any) => column.id), [columns]);
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
