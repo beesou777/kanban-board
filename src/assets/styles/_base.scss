@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body{
+    @apply bg-gray-200
+}
+
+// when text or any part of the body is selected
+::selection{
+    background: theme('color.purple.default');
+}
+
+// scrollbar styles
+::-webkit-scrollbar{
+    width: 4px;
+}
+
+::-webkit-scrollbar:horizontal{
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb{
+   background: theme('color.purple.default');
+}

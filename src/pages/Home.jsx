@@ -1,12 +1,10 @@
 import React from 'react'
-import Counter from "../component/counter/Counter"
+import KanbanBoard from "../component/KanbanBoard"
 
 const Home = () => {
   return (
     <>
-    <div className="h-screen flex justify-center items-center">
-      <Counter />
-    </div>
+      <KanbanBoard />
     </>
   )
 }
