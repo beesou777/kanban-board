@@ -30,32 +30,28 @@ const ColumnContainer = (props:any) => {
     )
   }
 
-
-
-
   return (
     <div 
     ref={setNodeRef}
     style={style}
-    onClick={() => setEditMode(true)}
-    className="bg-gray-900 w-[350px] h-[500px] max-h-[500px] rounded-md flex flex-col">
+    className="bg-[#f5f5f5] w-[350px] h-[500px] max-h-[500px] rounded-md flex flex-col">
       {/* Column Title */}
       <div 
        {...attributes}
        {...listeners}
-      className="bg-gray-800 text-md h-[60px] cursor-grab rounded-md rounded-b-none p-3 font-bold border-gray-950 border-4 text-white">
+      className="text-md h-[60px] cursor-grab rounded-md rounded-b-none p-3 text-gray-900">
         <div 
         className="flex gap-2 justify-between">
-          <div className="flex justify-center items-center bg-gray-950 px-2 py-1 text-sm">
+          <div className="flex justify-center items-center px-2 py-1 text-sm relative after:content-[''] after:absolute after:h-[10px] after:w-[10px] after:bg-gray-900 after:left-0 after:top-[50%] after:translate-y-[-50%] after:rounded-full ">
           
-          {!editMode && column.title}
+         <span  onClick={() => setEditMode(true)} className='pl-3'> {!editMode && column.title}</span>
           {editMode && <input onChange={(e) => updateColumnTitle(column.id,e.target.value)}
            defaultValue={column.title} 
            onKeyDown={(e) =>{
             if(e.key !== 'Enter') return;
             setEditMode(false); 
            }}
-           className="bg-gray-950 text-white outline-none"/>}
+           className="text-gray-900 font-bold outline-none pl-2"/>}
           </div>
           <button
         onClick={() => deleteColumn(column.id)}
